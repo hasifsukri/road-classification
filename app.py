@@ -3,7 +3,7 @@ from uuid import uuid4
 
 from flask import Flask, request, render_template, send_from_directory
 
-app = Flask(__name__, template_folder='template')
+app = Flask(__name__, template_folder='https://github.com/hasifsukri/road-classification/blob/main/template')
 # app = Flask(__name__, static_folder="images")
 
 
@@ -14,7 +14,7 @@ classes = ['bad','fair','good']
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("https://github.com/hasifsukri/road-classification/blob/main/template/index.html")
 
 @app.route("/upload", methods=["POST"])
 def upload():
@@ -41,7 +41,7 @@ def upload():
         from keras.preprocessing import image
 
         from keras.models import load_model
-        new_model = load_model('model.h5')
+        new_model = load_model('https://github.com/hasifsukri/road-classification/blob/main/model.h5')
         new_model.summary()
         test_image = image.load_img('/images'+filename,target_size=(64,64))
         test_image = image.img_to_array(test_image)
@@ -55,7 +55,7 @@ def upload():
         prediction = classes[i]
 
     #return send_from_directory("images", filename, as_attachment=True)
-    return render_template("template.html",image_name=filename, text=prediction)
+    return render_template("https://github.com/hasifsukri/road-classification/blob/main/template/template.html",image_name=filename, text=prediction)
 
 @app.route('/upload/<filename>')
 def send_image(filename):
